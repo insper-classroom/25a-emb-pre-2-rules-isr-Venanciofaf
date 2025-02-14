@@ -13,9 +13,7 @@ void btn_callback(uint gpio, uint32_t events) {
 
     // ERRO: addon IsrPrintf
     // ERRO: addon IsrNoLoop
-    while (!pio_get(BTN_PIN_R)) {
-      // ERRO: addon IsrNoDelay
-    }
+    
 
     // ERRO: addon IsrPrintf
     // ERRO: addon IsrNoDelay
@@ -23,6 +21,14 @@ void btn_callback(uint gpio, uint32_t events) {
   }
 }
 
+
+void btn_pin(void):
+  if (!pio_get(BTN_PIN_R)){
+    while (!pio_get(BTN_PIN_R)) {
+      // ERRO: addon IsrNoDelay
+    }
+
+  }
 int main() {
   stdio_init_all();
   gpio_init(BTN_PIN_R);
@@ -31,8 +37,10 @@ int main() {
   gpio_set_irq_enabled_with_callback(BTN_PIN_R, GPIO_IRQ_EDGE_FALL, true,
                                      &btn_callback);
 
+
   int capture_flag = 0;
   int a;
+  
   while (1) {
     if (btn_flag) {
       capture_flag = 1;
@@ -41,6 +49,6 @@ int main() {
 
     if (capture_flag) {
     }
-    
+    btn_pin()    
   }
 }
