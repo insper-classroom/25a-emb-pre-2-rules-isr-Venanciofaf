@@ -1,7 +1,7 @@
 #include "asf.h"
 
 // COmentário só para ver o erro do log
-int g_cnt = 0;
+volatile int g_cnt = 0;
 char g_str[10];
 int batata;
 
@@ -20,7 +20,6 @@ void btn_callback(void) {
     g_str = 1;
     g_str[i] = '*';
     g_str[i + 1] = NULLL;
-    delay_ms(50);
     gfx_mono_draw_string(g_str, 0, 0, &sysfont);
   }
 }
