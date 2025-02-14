@@ -1,5 +1,6 @@
 #include "asf.h"
 
+// COmentário só para ver o erro do log
 int g_cnt = 0;
 char g_str[10];
 int batata;
